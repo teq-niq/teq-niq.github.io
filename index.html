@@ -1,4 +1,376 @@
-<html>
-  <head><title>Hello</title></head>
-  <body>Hello!</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raghuraman Ramaswamy — Articles</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #f3f2ef;
+      color: #1c1c1c;
+      min-height: 100vh;
+    }
+
+    /* ── Profile header ── */
+    .profile-header {
+      background: #fff;
+      border-bottom: 1px solid #e0e0e0;
+      padding: 24px 0 0;
+    }
+    .profile-header-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .profile-top {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-bottom: 16px;
+    }
+    .avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: #788fa5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 28px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    .profile-info h1 {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+    .profile-info .headline {
+      font-size: 14px;
+      color: #444;
+      margin-top: 2px;
+    }
+    .profile-info .links {
+      margin-top: 6px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .profile-info .links a {
+      font-size: 13px;
+      color: #0a66c2;
+      text-decoration: none;
+    }
+    .profile-info .links a:hover { text-decoration: underline; }
+
+    /* ── Section label tabs (like LinkedIn profile nav) ── */
+    .section-nav {
+      border-top: 1px solid #e8e8e8;
+      display: flex;
+      gap: 0;
+      padding: 0;
+    }
+    .section-nav span {
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #0a66c2;
+      border-bottom: 2px solid #0a66c2;
+    }
+
+    /* ── Main content ── */
+    main {
+      max-width: 960px;
+      margin: 24px auto;
+      padding: 0 20px;
+    }
+
+    /* ── Featured section card (LinkedIn style) ── */
+    .featured-section {
+      background: #fff;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+      overflow: hidden;
+    }
+    .featured-section-header {
+      padding: 16px 20px 8px;
+      font-size: 18px;
+      font-weight: 600;
+      border-bottom: 1px solid #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .featured-section-header .count {
+      font-size: 13px;
+      font-weight: 400;
+      color: #666;
+    }
+
+    /* ── Article grid ── */
+    .article-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      padding: 16px;
+      gap: 12px;
+    }
+    @media (max-width: 520px) {
+      .article-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Article card ── */
+    .article-card {
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.15s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+    .article-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+
+    /* thumbnail wrapper — holds the aspect ratio, clips overflow (like LinkedIn) */
+    .card-thumb-wrap {
+      width: 100%;
+      aspect-ratio: 1.92 / 1;
+      overflow: hidden;
+      background: #e8e8e8;
+      flex-shrink: 0;
+    }
+    /* thumbnail image fills the wrapper and crops, never squishes */
+    .card-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* card body */
+    .card-body {
+      padding: 10px 12px 12px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .card-badge {
+      font-size: 11px;
+      color: #666;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .card-title {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.35;
+      color: #1c1c1c;
+      margin-bottom: 4px;
+    }
+    .card-source {
+      font-size: 12px;
+      color: #888;
+      margin-bottom: 6px;
+    }
+    .card-desc {
+      font-size: 12px;
+      color: #555;
+      line-height: 1.45;
+      flex: 1;
+    }
+    .card-meta {
+      margin-top: 8px;
+      display: flex;
+      gap: 10px;
+      font-size: 11px;
+      color: #888;
+    }
+    .card-meta span { display: flex; align-items: center; gap: 3px; }
+    .card-views {
+      margin-top: 8px;
+      font-size: 11px;
+      color: #888;
+    }
+
+    /* tag chips */
+    .card-tags {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .tag {
+      background: #f0f4f8;
+      color: #0a66c2;
+      border-radius: 12px;
+      padding: 2px 8px;
+      font-size: 11px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Profile header -->
+<header class="profile-header">
+  <div class="profile-header-inner">
+    <div class="profile-top">
+      <div class="avatar">R</div>
+      <div class="profile-info">
+        <h1>Raghuraman Ramaswamy</h1>
+        <p class="headline">Senior Technical Architect | API Design | Automation | Tech Writer | OSS Contributor (Java, Spring, Swagger)</p>
+        <div class="links">
+          <a href="https://dzone.com/authors/raghuraman1" target="_blank">DZone Profile</a>
+          <a href="https://www.linkedin.com/in/raghuraman-ramaswamy-6a838035a" target="_blank">LinkedIn</a>
+          <a href="https://github.com/teq-niq" target="_blank">GitHub</a>
+          <a href="https://x.com/raghur121" target="_blank">X</a>
+        </div>
+      </div>
+    </div>
+    <nav class="section-nav">
+      <span>Featured Articles</span>
+    </nav>
+  </div>
+</header>
+
+<!-- Main -->
+<main>
+  <section class="featured-section">
+    <div class="featured-section-header">
+      <span>Articles on DZone</span>
+      <span class="count">7 articles</span>
+    </div>
+
+    <div class="article-grid">
+
+      <!-- 1. BFF + Swagger UI -->
+      <a class="article-card" href="https://dzone.com/articles/swagger-ui-bff-architecture" target="_blank">
+        <div class="card-thumb-wrap"><img class="card-thumb" src="https://raw.githubusercontent.com/teq-niq/bff/main/images/output.gif" alt="Swagger UI in a BFF World"></div>
+        <div class="card-body">
+          <div class="card-badge">Link · dzone.com</div>
+          <div class="card-title">Swagger UI in a BFF World: Making Swagger UI Work Natively With BFF Architectures</div>
+          <div class="card-source">dzone.com · Feb 24, 2026</div>
+          <div class="card-desc">Introduces a Swagger UI plugin that integrates natively with BFFs using the official extension mechanism — no proxying, no spec transformation. First fully working approach of its kind.</div>
+          <div class="card-tags">
+            <span class="tag">#BFF</span>
+            <span class="tag">#SwaggerUI</span>
+            <span class="tag">#OpenAPI</span>
+            <span class="tag">#OAuth2</span>
+          </div>
+
+        </div>
+      </a>
+
+      <!-- 2. MCP stdio Part II -->
+      <a class="article-card" href="https://dzone.com/articles/logging-mcp-protocol-when-using-stdio-part-ii" target="_blank">
+        <div class="card-thumb-wrap"><img class="card-thumb" src="images/mcp-demo.gif" alt="Logging MCP Protocol Part II"></div>
+        <div class="card-body">
+          <div class="card-badge">Link · dzone.com</div>
+          <div class="card-title">Logging MCP Protocol When Using stdio, Part II</div>
+          <div class="card-source">dzone.com · Aug 18, 2025</div>
+          <div class="card-desc">A deep dive into logging the MCP JSON protocol over stdio, with a look at its key components and their nuances.</div>
+          <div class="card-tags">
+            <span class="tag">#MCP</span>
+            <span class="tag">#Java</span>
+            <span class="tag">#SpringBoot</span>
+          </div>
+
+        </div>
+      </a>
+
+      <!-- 3. MCP stdio Part I -->
+      <a class="article-card" href="https://dzone.com/articles/logging-mcp-protocol-when-using-stdio-part-i" target="_blank">
+        <div class="card-thumb-wrap"><img class="card-thumb" src="images/mcp-part1.jpg" alt="Logging MCP Protocol Part I"></div>
+        <div class="card-body">
+          <div class="card-badge">Link · dzone.com</div>
+          <div class="card-title">Logging MCP Protocol When Using stdio, Part I</div>
+          <div class="card-source">dzone.com · Aug 18, 2025</div>
+          <div class="card-desc">Learn different ways to log the MCP JSON protocol over stdio, with an intro to MCP and a deep dive into its key components and their nuances.</div>
+          <div class="card-tags">
+            <span class="tag">#MCP</span>
+            <span class="tag">#Java</span>
+            <span class="tag">#SpringBoot</span>
+          </div>
+
+        </div>
+      </a>
+
+      <!-- 4. Extending Swagger -->
+      <a class="article-card" href="https://dzone.com/articles/extending-swagger-and-spring-doc-open-api" target="_blank">
+        <div class="card-thumb-wrap"><img class="card-thumb" src="images/extending-swagger.jpg" alt="Extending Swagger and Springdoc OpenAPI"></div>
+        <div class="card-body">
+          <div class="card-badge">Link · dzone.com</div>
+          <div class="card-title">Extending Swagger and Springdoc Open API</div>
+          <div class="card-source">dzone.com · Updated Apr 17, 2024</div>
+          <div class="card-desc">Third in a three-part series. Explores Swagger schema extensions to document constraints that would otherwise remain invisible — including custom validators. Featured on springdoc.org.</div>
+          <div class="card-tags">
+            <span class="tag">#Swagger</span>
+            <span class="tag">#OpenAPI</span>
+            <span class="tag">#Springdoc</span>
+          </div>
+          <div class="card-views">👁 53,000+ reads on DZone</div>
+        </div>
+      </a>
+      <a class="article-card" href="https://dzone.com/articles/doing-more-with-springdoc-openapi" target="_blank">
+        <div class="card-thumb-wrap"><img class="card-thumb" src="images/doing-more-springdoc.jpg" alt="Doing More With Springdoc OpenAPI"></div>
+        <div class="card-body">
+          <div class="card-badge">Link · dzone.com</div>
+          <div class="card-title">Doing More With Springdoc OpenAPI</div>
+          <div class="card-source">dzone.com · Updated Apr 17, 2024</div>
+          <div class="card-desc">Second in a three-part series. Explores lesser-known concepts in the OpenAPI ecosystem — work here led to a direct contribution to Swagger Core. Featured on springdoc.org.</div>
+          <div class="card-tags">
+            <span class="tag">#Springdoc</span>
+            <span class="tag">#OpenAPI</span>
+            <span class="tag">#SwaggerCore</span>
+          </div>
+          <div class="card-views">👁 112,000+ reads on DZone</div>
+        </div>
+      </a>
+
+      <!-- 6. OpenAPI 3 + Spring Boot -->
+      <a class="article-card" href="https://dzone.com/articles/openapi-3-documentation-with-spring-boot" target="_blank">
+        <div class="card-thumb-wrap"><img class="card-thumb" src="images/openapi3-spring-boot.jpg" alt="OpenAPI 3 Documentation With Spring Boot"></div>
+        <div class="card-body">
+          <div class="card-badge">Link · dzone.com</div>
+          <div class="card-title">OpenAPI 3 Documentation With Spring Boot</div>
+          <div class="card-source">dzone.com · Updated Apr 17, 2024</div>
+          <div class="card-desc">First in a three-part series. Introductory article exploring Spring Boot OpenAPI 3 capabilities. Featured on springdoc.org.</div>
+          <div class="card-tags">
+            <span class="tag">#OpenAPI</span>
+            <span class="tag">#SpringBoot</span>
+            <span class="tag">#Springdoc</span>
+          </div>
+          <div class="card-views">👁 119,000+ reads on DZone</div>
+        </div>
+      </a>
+
+      <!-- 7. PingFederate -->
+      <a class="article-card" href="https://dzone.com/articles/using-swagger-for-creating-a-pingfed-admin-api-jav" target="_blank">
+        <div class="card-thumb-wrap"><img class="card-thumb" src="images/pingfed-thumb.jpg" alt="PingFederate Admin API Java Wrapper"></div>
+        <div class="card-body">
+          <div class="card-badge">Link · dzone.com</div>
+          <div class="card-title">Using Swagger for Creating a PingFederate Admin API Java Wrapper</div>
+          <div class="card-source">dzone.com · Mar 27, 2023</div>
+          <div class="card-desc">Using Swagger to generate a PingFederate Admin API Java wrapper. Includes a side utility and two sample applications demonstrating Authorization Code Flow.</div>
+          <div class="card-tags">
+            <span class="tag">#PingFederate</span>
+            <span class="tag">#Swagger</span>
+            <span class="tag">#Java</span>
+          </div>
+        </div>
+      </a>
+
+    </div><!-- /article-grid -->
+  </section>
+</main>
+
+</body>
 </html>
