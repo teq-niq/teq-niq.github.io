@@ -6,10 +6,7 @@ _Last updated: April 13, 2026_
 ## Purpose of This Site
 
 Personal portfolio/article showcase for Raghuraman Ramaswamy.  
-**Target audience:** People who already know you exist — recruiters, engineers checking you out, people sent here deliberately via LinkedIn/email signature.  
-NOT a discovery channel. DZone is the discovery channel.
-
----
+--
 
 ## Article Card Design Decisions
 
