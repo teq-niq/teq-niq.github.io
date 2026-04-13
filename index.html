@@ -131,7 +131,6 @@
       display: flex;
       flex-direction: column;
       transition: box-shadow 0.15s ease;
-      text-decoration: none;
       color: inherit;
     }
     .article-card:hover {
@@ -163,10 +162,9 @@
     }
     .card-badge {
       font-size: 11px;
-      color: #666;
+      color: #888;
       margin-bottom: 4px;
-      text-transform: uppercase;
-      letter-spacing: 0.4px;
+      font-style: italic;
     }
     .card-title {
       font-size: 14px;
@@ -215,6 +213,43 @@
       font-size: 11px;
       font-weight: 500;
     }
+
+    /* card footer links */
+    .card-footer {
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px solid #f0f0f0;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 14px;
+      text-decoration: none;
+      transition: background 0.15s ease;
+    }
+    .card-link-dzone {
+      background: #0a66c2;
+      color: #fff;
+      border: 1px solid #0a66c2;
+    }
+    .card-link-dzone:hover { background: #004182; border-color: #004182; }
+    .card-link-github {
+      background: transparent;
+      color: #666;
+      border: none;
+      font-size: 11px;
+      font-weight: 400;
+      padding: 5px 4px;
+    }
+    .card-link-github:hover { color: #24292f; text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -252,12 +287,12 @@
     <div class="article-grid">
 
       <!-- 1. BFF + Swagger UI -->
-      <a class="article-card" href="https://dzone.com/articles/swagger-ui-bff-architecture" target="_blank">
+      <div class="article-card">
         <div class="card-thumb-wrap"><img class="card-thumb" src="https://raw.githubusercontent.com/teq-niq/bff/main/images/output.gif" alt="Swagger UI in a BFF World"></div>
         <div class="card-body">
-          <div class="card-badge">Link · dzone.com</div>
+          <div class="card-badge">First published on DZone</div>
           <div class="card-title">Swagger UI in a BFF World: Making Swagger UI Work Natively With BFF Architectures</div>
-          <div class="card-source">dzone.com · Feb 24, 2026</div>
+          <div class="card-source">Feb 24, 2026</div>
           <div class="card-desc">Introduces a Swagger UI plugin that integrates natively with BFFs using the official extension mechanism — no proxying, no spec transformation. First fully working approach of its kind.</div>
           <div class="card-tags">
             <span class="tag">#BFF</span>
@@ -265,51 +300,60 @@
             <span class="tag">#OpenAPI</span>
             <span class="tag">#OAuth2</span>
           </div>
-
+          <div class="card-footer">
+            <a class="card-link card-link-dzone" href="https://dzone.com/articles/swagger-ui-bff-architecture" target="_blank">📄 DZone Article</a>
+            <a class="card-link card-link-github" href="https://github.com/teq-niq/bff" target="_blank">⌥ GitHub Repo</a>
+          </div>
         </div>
-      </a>
+      </div>
 
       <!-- 2. MCP stdio Part II -->
-      <a class="article-card" href="https://dzone.com/articles/logging-mcp-protocol-when-using-stdio-part-ii" target="_blank">
+      <div class="article-card">
         <div class="card-thumb-wrap"><img class="card-thumb" src="images/mcp-demo.gif" alt="Logging MCP Protocol Part II"></div>
         <div class="card-body">
-          <div class="card-badge">Link · dzone.com</div>
+          <div class="card-badge">First published on DZone</div>
           <div class="card-title">Logging MCP Protocol When Using stdio, Part II</div>
-          <div class="card-source">dzone.com · Aug 18, 2025</div>
+          <div class="card-source">Aug 18, 2025</div>
           <div class="card-desc">A deep dive into logging the MCP JSON protocol over stdio, with a look at its key components and their nuances.</div>
           <div class="card-tags">
             <span class="tag">#MCP</span>
             <span class="tag">#Java</span>
             <span class="tag">#SpringBoot</span>
           </div>
-
+          <div class="card-footer">
+            <a class="card-link card-link-dzone" href="https://dzone.com/articles/logging-mcp-protocol-when-using-stdio-part-ii" target="_blank">📄 DZone Article</a>
+            <a class="card-link card-link-github" href="https://github.com/teq-niq/mcp-stdio-logging" target="_blank">⌥ GitHub Repo</a>
+          </div>
         </div>
-      </a>
+      </div>
 
       <!-- 3. MCP stdio Part I -->
-      <a class="article-card" href="https://dzone.com/articles/logging-mcp-protocol-when-using-stdio-part-i" target="_blank">
+      <div class="article-card">
         <div class="card-thumb-wrap"><img class="card-thumb" src="images/mcp-part1.jpg" alt="Logging MCP Protocol Part I"></div>
         <div class="card-body">
-          <div class="card-badge">Link · dzone.com</div>
+          <div class="card-badge">First published on DZone</div>
           <div class="card-title">Logging MCP Protocol When Using stdio, Part I</div>
-          <div class="card-source">dzone.com · Aug 18, 2025</div>
+          <div class="card-source">Aug 18, 2025</div>
           <div class="card-desc">Learn different ways to log the MCP JSON protocol over stdio, with an intro to MCP and a deep dive into its key components and their nuances.</div>
           <div class="card-tags">
             <span class="tag">#MCP</span>
             <span class="tag">#Java</span>
             <span class="tag">#SpringBoot</span>
           </div>
-
+          <div class="card-footer">
+            <a class="card-link card-link-dzone" href="https://dzone.com/articles/logging-mcp-protocol-when-using-stdio-part-i" target="_blank">📄 DZone Article</a>
+            <a class="card-link card-link-github" href="https://github.com/teq-niq/mcp-stdio-logging" target="_blank">⌥ GitHub Repo</a>
+          </div>
         </div>
-      </a>
+      </div>
 
       <!-- 4. Extending Swagger -->
-      <a class="article-card" href="https://dzone.com/articles/extending-swagger-and-spring-doc-open-api" target="_blank">
+      <div class="article-card">
         <div class="card-thumb-wrap"><img class="card-thumb" src="images/extending-swagger.jpg" alt="Extending Swagger and Springdoc OpenAPI"></div>
         <div class="card-body">
-          <div class="card-badge">Link · dzone.com</div>
+          <div class="card-badge">First published on DZone</div>
           <div class="card-title">Extending Swagger and Springdoc Open API</div>
-          <div class="card-source">dzone.com · Updated Apr 17, 2024</div>
+          <div class="card-source">Updated Apr 17, 2024</div>
           <div class="card-desc">Third in a three-part series. Explores Swagger schema extensions to document constraints that would otherwise remain invisible — including custom validators. Featured on springdoc.org.</div>
           <div class="card-tags">
             <span class="tag">#Swagger</span>
@@ -317,14 +361,20 @@
             <span class="tag">#Springdoc</span>
           </div>
           <div class="card-views">👁 53,000+ reads on DZone</div>
+          <div class="card-footer">
+            <a class="card-link card-link-dzone" href="https://dzone.com/articles/extending-swagger-and-spring-doc-open-api" target="_blank">📄 DZone Article</a>
+            <a class="card-link card-link-github" href="https://github.com/teq-niq/sample/tree/documented-custom-validators-updated1" target="_blank">⌥ GitHub Repo</a>
+          </div>
         </div>
-      </a>
-      <a class="article-card" href="https://dzone.com/articles/doing-more-with-springdoc-openapi" target="_blank">
+      </div>
+
+      <!-- 5. Doing More With Springdoc -->
+      <div class="article-card">
         <div class="card-thumb-wrap"><img class="card-thumb" src="images/doing-more-springdoc.jpg" alt="Doing More With Springdoc OpenAPI"></div>
         <div class="card-body">
-          <div class="card-badge">Link · dzone.com</div>
+          <div class="card-badge">First published on DZone</div>
           <div class="card-title">Doing More With Springdoc OpenAPI</div>
-          <div class="card-source">dzone.com · Updated Apr 17, 2024</div>
+          <div class="card-source">Updated Apr 17, 2024</div>
           <div class="card-desc">Second in a three-part series. Explores lesser-known concepts in the OpenAPI ecosystem — work here led to a direct contribution to Swagger Core. Featured on springdoc.org.</div>
           <div class="card-tags">
             <span class="tag">#Springdoc</span>
@@ -332,16 +382,20 @@
             <span class="tag">#SwaggerCore</span>
           </div>
           <div class="card-views">👁 112,000+ reads on DZone</div>
+          <div class="card-footer">
+            <a class="card-link card-link-dzone" href="https://dzone.com/articles/doing-more-with-springdoc-openapi" target="_blank">📄 DZone Article</a>
+            <a class="card-link card-link-github" href="https://github.com/teq-niq/sample/tree/springdoc-openapi-doingmore-updated1" target="_blank">⌥ GitHub Repo</a>
+          </div>
         </div>
-      </a>
+      </div>
 
       <!-- 6. OpenAPI 3 + Spring Boot -->
-      <a class="article-card" href="https://dzone.com/articles/openapi-3-documentation-with-spring-boot" target="_blank">
+      <div class="article-card">
         <div class="card-thumb-wrap"><img class="card-thumb" src="images/openapi3-spring-boot.jpg" alt="OpenAPI 3 Documentation With Spring Boot"></div>
         <div class="card-body">
-          <div class="card-badge">Link · dzone.com</div>
+          <div class="card-badge">First published on DZone</div>
           <div class="card-title">OpenAPI 3 Documentation With Spring Boot</div>
-          <div class="card-source">dzone.com · Updated Apr 17, 2024</div>
+          <div class="card-source">Updated Apr 17, 2024</div>
           <div class="card-desc">First in a three-part series. Introductory article exploring Spring Boot OpenAPI 3 capabilities. Featured on springdoc.org.</div>
           <div class="card-tags">
             <span class="tag">#OpenAPI</span>
@@ -349,24 +403,32 @@
             <span class="tag">#Springdoc</span>
           </div>
           <div class="card-views">👁 119,000+ reads on DZone</div>
+          <div class="card-footer">
+            <a class="card-link card-link-dzone" href="https://dzone.com/articles/openapi-3-documentation-with-spring-boot" target="_blank">📄 DZone Article</a>
+            <a class="card-link card-link-github" href="https://github.com/teq-niq/sample/tree/springdoc-openapi-intro-update1" target="_blank">⌥ GitHub Repo</a>
+          </div>
         </div>
-      </a>
+      </div>
 
       <!-- 7. PingFederate -->
-      <a class="article-card" href="https://dzone.com/articles/using-swagger-for-creating-a-pingfed-admin-api-jav" target="_blank">
+      <div class="article-card">
         <div class="card-thumb-wrap"><img class="card-thumb" src="images/pingfed-thumb.jpg" alt="PingFederate Admin API Java Wrapper"></div>
         <div class="card-body">
-          <div class="card-badge">Link · dzone.com</div>
+          <div class="card-badge">First published on DZone</div>
           <div class="card-title">Using Swagger for Creating a PingFederate Admin API Java Wrapper</div>
-          <div class="card-source">dzone.com · Mar 27, 2023</div>
+          <div class="card-source">Mar 27, 2023</div>
           <div class="card-desc">Using Swagger to generate a PingFederate Admin API Java wrapper. Includes a side utility and two sample applications demonstrating Authorization Code Flow.</div>
           <div class="card-tags">
             <span class="tag">#PingFederate</span>
             <span class="tag">#Swagger</span>
             <span class="tag">#Java</span>
           </div>
+          <div class="card-footer">
+            <a class="card-link card-link-dzone" href="https://dzone.com/articles/using-swagger-for-creating-a-pingfed-admin-api-jav" target="_blank">📄 DZone Article</a>
+            <a class="card-link card-link-github" href="https://github.com/teq-niq/pingfed-automation" target="_blank">⌥ GitHub Repo</a>
+          </div>
         </div>
-      </a>
+      </div>
 
     </div><!-- /article-grid -->
   </section>
